@@ -16,6 +16,7 @@ tags:
   - 客户
   - 销售模式
 source_file: D178_RAS_202503_0715004164DC60F2B24E1B918C7FABEBA7D3A7.pdf
+source_title: 汉桑（南京）科技股份有限公司申请首次公开发行股票并在创业板上市的审核中心意见落实函的回复
 source_format: PDF
 source_pages: 4-22
 boundary_basis: PDF目录标题；request_completion

@@ -144,8 +144,9 @@ When a new fact or exception arrives:
 ## Source and citation rules
 
 - Every regulatory case stated in an answer must visibly identify the specific company, the cited source document, and the exact source page or page range.
-- Display the cited document using the formal title printed on the source document's first page, enclosed in Chinese square brackets: `【首页正式文件名】`. Typical forms include `【关于××公司××的回复】` and `【关于××的回复】`.
-- Preserve the first-page wording. Do not replace it with a local Markdown filename, an internal `source_id`, a coded PDF filename, an archive name, or a shortened title invented from the company and project.
+- Display the cited document using the formal or normalized source title, enclosed in Chinese square brackets: `【引用文件名】`.
+- If otherwise equivalent title variants differ only because one contains “关于”, remove every occurrence of “关于” from the normalized `source_title`; do not retain “关于” in the displayed title for those normalized records.
+- Preserve the remaining source wording. Do not replace it with a local Markdown filename, an internal `source_id`, a coded PDF filename, or an archive name. When the first page is unavailable, resolve the title in this order: issuer signature-page title, repeated document header, then the canonical combination `公司名称＋项目名称＋审核问询函的回复`.
 - Treat `company`, `source_title`, `source_file`, and `source_pages` as mandatory citation fields. `source_title` is the verified first-page formal title; `source_file` is retained only for internal traceability and must not be shown as the cited document name. If any field is absent or uncertain, do not present that record as a case.
 - Never replace a known company name with “某公司”, “某发行人”, or another anonymous label.
 - When several cases support one pattern, list each company and its file/page citation separately so the mapping remains unambiguous.
@@ -155,7 +156,7 @@ When a new fact or exception arrives:
 - Do not fabricate regulations, cases, page numbers, or source conclusions.
 - Prefer paraphrase; quote only short passages needed to preserve technical meaning.
 
-Before sending an answer that contains cases, audit every case row or paragraph and remove any entry that lacks a specific company name, a verified first-page document title in `【】`, or an exact page citation.
+Before sending an answer that contains cases, audit every case row or paragraph and remove any entry that lacks a specific company name, a formal or normalized source title in `【】`, or an exact page citation.
 
 ## Quality and safety
 

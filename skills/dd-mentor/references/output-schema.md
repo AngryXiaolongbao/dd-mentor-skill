@@ -65,9 +65,9 @@ Present cases in a structure that preserves the one-to-one mapping:
 | 公司名称 | 项目/板块 | 监管问题 | 回复要点及所用证据 | 对本项目的启示 | 引用文件 | 页码 |
 | --- | --- | --- | --- | --- | --- | --- |
 
-In `引用文件`, use the formal document title printed on the source document's first page and enclose it in Chinese square brackets, for example `【关于××公司首次公开发行股票并上市申请文件审核问询函的回复】`. Do not show an internal PDF code, local Markdown filename, `source_id`, archive name, or an inferred abbreviation.
+In `引用文件`, use the formal or normalized source title and enclose it in Chinese square brackets, for example `【××公司首次公开发行股票并上市申请文件审核问询函的回复】`. When equivalent title variants differ only by “关于”, remove every occurrence of “关于”. Do not show an internal PDF code, local Markdown filename, `source_id`, archive name, or an inferred abbreviation.
 
-Do not use “某公司” or combine several companies under one shared citation. If `公司名称`、首页正式文件名 or `页码` cannot be verified from the opened record, omit the case rather than presenting it with an incomplete citation.
+Do not use “某公司” or combine several companies under one shared citation. If `公司名称`、正式或规范化文件名 or `页码` cannot be verified from the opened record, omit the case rather than presenting it with an incomplete citation.
 
 Prefer cases from the latest available three to five years and disclose the knowledge-base cutoff. Do not label older or undated material as “recent”.
 
