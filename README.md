@@ -1,6 +1,6 @@
-# DD Bible — 交易尽调智能助手
+# DD Mentor — 交易尽调智能导师
 
-DD Bible 是一个以 **Teaching（教学）** 为核心的 Codex Skill，用于针对具体项目规划尽职调查工作。它会像一名有经验的项目经理一样，通过多轮对话帮助使用者理解项目，解释每项尽调要求背后的原因和证据链，培养风险分析思维，并随着新信息和异常事项的出现动态调整尽调计划。
+DD Mentor 是一个以 **Teaching（教学）** 为核心的 Codex Skill，用于针对具体项目规划尽职调查工作。它会像一名有经验的项目经理一样，通过多轮对话帮助使用者理解项目，解释每项尽调要求背后的原因和证据链，培养风险分析思维，并随着新信息和异常事项的出现动态调整尽调计划。
 
 ## 核心能力
 
@@ -14,7 +14,7 @@ DD Bible 是一个以 **Teaching（教学）** 为核心的 Codex Skill，用于
 
 ## 尽调知识结构
 
-DD Bible 按三个层次生成尽调计划：
+DD Mentor 按三个层次生成尽调计划：
 
 - 根据通用尽调教学框架，列出全部适用的基础尽调事项；
 - 根据业务和财务专项指南，补充资料要求、核查程序和异常分支；
@@ -32,11 +32,11 @@ DD Bible 按三个层次生成尽调计划：
 
 可安装的 Skill 位于：
 
-`skills/dd-bible/`
+`skills/dd-mentor/`
 
 本仓库包括：
 
-- DD Bible Skill 指令及多轮对话流程；
+- DD Mentor Skill 指令及多轮对话流程；
 - Teaching 教学框架和标准输出结构；
 - 改写后的通用尽调教学框架；
 - 改写后的 IPO 业务及财务专项尽调指南；
@@ -54,33 +54,33 @@ DD Bible 按三个层次生成尽调计划：
 
 仓库内置知识库位于：
 
-`skills/dd-bible/knowledge/`
+`skills/dd-mentor/knowledge/`
 
-也可以通过环境变量 `DDBIBLE_KNOWLEDGE_ROOT` 指向其他经合法授权的本地知识库。知识库目录和字段说明见：
+也可以通过环境变量 `DDMENTOR_KNOWLEDGE_ROOT` 指向其他经合法授权的本地知识库。为兼容已有安装，仍支持原环境变量 `DDBIBLE_KNOWLEDGE_ROOT`。知识库目录和字段说明见：
 
-`skills/dd-bible/references/knowledge-map.md`
+`skills/dd-mentor/references/knowledge-map.md`
 
 使用者应确保其有权存储、处理和引用知识库中的资料。
 
 ## 安装方法
 
-将 `skills/dd-bible/` 复制到 Codex Skill 目录：
+将 `skills/dd-mentor/` 复制到 Codex Skill 目录：
 
-`$CODEX_HOME/skills/dd-bible`
+`$CODEX_HOME/skills/dd-mentor`
 
 如果没有设置 `CODEX_HOME`，请使用当前操作系统默认的 Codex Skill 目录。
 
 刷新或重新启动 Codex，使其识别该 Skill，然后调用：
 
-`$dd-bible`
+`$dd-mentor`
 
-首次调用时，DD Bible 会先提示信息安全要求，并在使用者确认后开始了解项目。
+首次调用时，DD Mentor 会先提示信息安全要求，并在使用者确认后开始了解项目。
 
 ## 使用方式
 
 使用者无需事先掌握专业尽调术语，可以从公司名称、主要业务、项目目的、是否计划上市和大致规模开始介绍，也可以上传已经充分脱敏的现有项目资料。
 
-DD Bible 会通过少量、分轮的问题逐步完善项目画像。信息充分后，将形成：
+DD Mentor 会通过少量、分轮的问题逐步完善项目画像。信息充分后，将形成：
 
 - 项目理解及关键假设；
 - 三至五项重点尽调方向；

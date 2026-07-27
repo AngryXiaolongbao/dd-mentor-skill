@@ -1,4 +1,4 @@
-# DD Bible knowledge base
+# DD Mentor knowledge base
 
 This packaged knowledge base contains two different source layers:
 

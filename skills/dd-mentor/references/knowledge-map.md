@@ -4,9 +4,9 @@
 
 Set the knowledge root with:
 
-`DDBIBLE_KNOWLEDGE_ROOT`
+`DDMENTOR_KNOWLEDGE_ROOT`
 
-If the environment variable is absent, the skill looks for `<skill-directory>/knowledge`. The GitHub package includes rewritten teaching guidance and public regulatory inquiry-and-response records. It excludes original proprietary manual text.
+For backward compatibility, the skill also accepts `DDBIBLE_KNOWLEDGE_ROOT`. If neither environment variable is present, the skill looks for `<skill-directory>/knowledge`. The GitHub package includes rewritten teaching guidance and public regulatory inquiry-and-response records. It excludes original proprietary manual text.
 
 ## Modules
 

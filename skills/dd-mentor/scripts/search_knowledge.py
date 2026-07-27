@@ -164,7 +164,7 @@ def scan_manuals(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Search DD Bible manuals and regulatory Q&A."
+        description="Search DD Mentor manuals and regulatory Q&A."
     )
     parser.add_argument("--query", required=True)
     parser.add_argument("--market", default="")
@@ -176,9 +176,14 @@ def main() -> None:
     parser.add_argument("--root", type=Path)
     args = parser.parse_args()
 
-    root = args.root or Path(os.environ.get("DDBIBLE_KNOWLEDGE_ROOT", DEFAULT_ROOT))
+    root = args.root or Path(
+        os.environ.get(
+            "DDMENTOR_KNOWLEDGE_ROOT",
+            os.environ.get("DDBIBLE_KNOWLEDGE_ROOT", DEFAULT_ROOT),
+        )
+    )
     if not (root / "README.md").exists():
-        raise SystemExit(f"DD Bible knowledge root not found: {root}")
+        raise SystemExit(f"DD Mentor knowledge root not found: {root}")
 
     needles = terms(args.query)
     results: list[dict[str, object]] = []
