@@ -22,7 +22,7 @@ Use `DDMENTOR_KNOWLEDGE_ROOT` when set. For backward compatibility, fall back to
 
 `<skill-directory>/knowledge`
 
-Verify that `README.md` and `review_comments/README.md` exist. The bundled knowledge contains rewritten teaching guides and public regulatory inquiry-and-response records; it does not contain original proprietary manual text. If no knowledge root is available, explain that limitation and do not fabricate source-grounded results. Read [references/knowledge-map.md](references/knowledge-map.md) when locating modules or interpreting metadata.
+Verify that `README.md` and `review_comments/README.md` exist. The bundled knowledge contains teaching guides and public regulatory inquiry-and-response records. If no knowledge root is available, explain that limitation and do not fabricate source-grounded results. Read [references/knowledge-map.md](references/knowledge-map.md) when locating modules or interpreting metadata.
 
 ## Choose the mode
 
@@ -90,7 +90,7 @@ Before producing the first checklist, show a concise “我对项目的理解”
 
 Read [references/knowledge-map.md](references/knowledge-map.md) and retrieve in this mandatory order:
 
-1. **Complete baseline**: read all applicable sections of `general_dd_manuals/GEN-RW-001 通用尽调教学框架.md`. Preserve every applicable baseline diligence matter. Mark an item `不适用` with a reason rather than silently dropping it.
+1. **Complete baseline**: read all applicable sections of `general_dd_manuals/GEN-001 通用尽调教学框架.md`. Preserve every applicable baseline diligence matter. Mark an item `不适用` with a reason rather than silently dropping it.
 2. **Topic detail**: use the topic-specific practice manuals in `ipo_dd_manuals/` to expand the relevant business and financial workstreams, including evidence, procedures, samples, reconciliations, and exception follow-up.
 3. **Recent regulatory focus**: run `scripts/search_knowledge.py` against `review_comments/` using the industry, business model, market, and key topics. Prefer the latest available three to five years, state the actual source period and corpus cutoff, and distinguish recurring attention from a one-off case.
 
