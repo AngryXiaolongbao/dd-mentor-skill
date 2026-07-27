@@ -23,20 +23,24 @@ Do not upload or provide state secrets, work secrets, trade secrets, sensitive p
 
 The installable skill is located at `skills/dd-bible/`.
 
+This repository includes:
+
+- rewritten, teaching-oriented general and topic-specific diligence guidance;
+- public exchange inquiry-and-response records converted to searchable Markdown.
+
 This repository intentionally excludes:
 
-- proprietary due diligence manuals;
-- exchange inquiry and response source files;
+- original proprietary due diligence manual text;
 - client or project data;
 - local indexes, logs, caches, and generated search results.
 
 ## Knowledge-base configuration
 
-Set `DDBIBLE_KNOWLEDGE_ROOT` to an authorized local knowledge base. If the environment variable is absent, the skill looks for:
+The packaged knowledge base is located at:
 
 `skills/dd-bible/knowledge/`
 
-Expected modules are documented in `skills/dd-bible/references/knowledge-map.md`.
+You may override it by setting `DDBIBLE_KNOWLEDGE_ROOT` to another authorized local knowledge base. Expected modules are documented in `skills/dd-bible/references/knowledge-map.md`.
 
 Only use materials that you are authorized and licensed to store, process, and cite.
 
@@ -52,4 +56,4 @@ Restart or refresh Codex so it discovers the skill, then invoke `$dd-bible`.
 
 ## Limitations
 
-This skill supports diligence planning and professional training. It does not replace audit, legal, valuation, regulatory, or investment advice. Source-grounded output requires a separately configured authorized knowledge base.
+This skill supports diligence planning and professional training. It does not replace audit, legal, valuation, regulatory, or investment advice. Rewritten guidance is educational material, and regulatory examples do not create universal requirements.

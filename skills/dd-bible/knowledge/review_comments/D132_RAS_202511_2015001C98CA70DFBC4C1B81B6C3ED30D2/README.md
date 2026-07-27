@@ -1,0 +1,31 @@
+# 杭州福恩股份有限公司：监管问询及回复
+
+- Project：首次公开发行股票并在主板上市
+- Market：主板
+- 行业：可选消费--纺织服装Ⅱ--纺织服装Ⅲ--纺织品（Wind行业）
+- 行业分类依据：industry.xlsx Sheet2 Wind行业列（2026-07-27）
+- 行业分类状态：Wind行业已核验
+- 原始文件：`D132_RAS_202511_2015001C98CA70DFBC4C1B81B6C3ED30D20E09.pdf`
+
+- 问答边界依据：PDF 目录中的一级问题标题
+
+| 问题 | 主题 | 属性 | 页码 | 边界方式 | 条目 |
+| ---: | --- | --- | --- | --- | --- |
+| 1 | 关于业务与技术 | 行业特有问题 | 4-40 | explicit_reply_marker | [Q01 关于业务与技术.md](Q01 关于业务与技术.md) |
+| 2 | 关于行业情况及行业代表性 | 行业特有问题 | 40-71 | explicit_reply_marker | [Q02 关于行业情况及行业代表性.md](Q02 关于行业情况及行业代表性.md) |
+| 3 | 关于实际控制人认定 | 通用问题 | 71-86 | explicit_reply_marker | [Q03 关于实际控制人认定.md](Q03 关于实际控制人认定.md) |
+| 4 | 关于历史沿革 | 通用问题 | 86-103 | explicit_reply_marker | [Q04 关于历史沿革.md](Q04 关于历史沿革.md) |
+| 5 | 关于股权激励 | 通用问题 | 103-117 | explicit_reply_marker | [Q05 关于股权激励.md](Q05 关于股权激励.md) |
+| 6 | 关于同业竞争与关联交易 | 通用问题 | 117-138 | explicit_reply_marker | [Q06 关于同业竞争与关联交易.md](Q06 关于同业竞争与关联交易.md) |
+| 7 | 关于合规经营 | 通用问题 | 138-153 | explicit_reply_marker | [Q07 关于合规经营.md](Q07 关于合规经营.md) |
+| 8 | 关于募投项目 | 通用问题 | 153-170 | explicit_reply_marker | [Q08 关于募投项目.md](Q08 关于募投项目.md) |
+| 9 | 关于营业收入 | 通用问题 | 170-200 | explicit_reply_marker | [Q09 关于营业收入.md](Q09 关于营业收入.md) |
+| 10 | 关于主要客户 | 通用问题 | 200-209 | explicit_reply_marker | [Q10 关于主要客户.md](Q10 关于主要客户.md) |
+| 11 | 关于营业成本 | 通用问题 | 209-223 | explicit_reply_marker | [Q11 关于营业成本.md](Q11 关于营业成本.md) |
+| 12 | 关于采购与供应商 | 通用问题 | 223-236 | explicit_reply_marker | [Q12 关于采购与供应商.md](Q12 关于采购与供应商.md) |
+| 13 | 关于委托加工 | 通用问题 | 236-245 | explicit_reply_marker | [Q13 关于委托加工.md](Q13 关于委托加工.md) |
+| 14 | 关于毛利率 | 通用问题 | 245-265 | explicit_reply_marker | [Q14 关于毛利率.md](Q14 关于毛利率.md) |
+| 15 | 关于期间费用 | 通用问题 | 265-275 | explicit_reply_marker | [Q15 关于期间费用.md](Q15 关于期间费用.md) |
+| 16 | 关于应收款项 | 通用问题 | 275-282 | explicit_reply_marker | [Q16 关于应收款项.md](Q16 关于应收款项.md) |
+| 17 | 关于存货 | 通用问题 | 282-299 | explicit_reply_marker | [Q17 关于存货.md](Q17 关于存货.md) |
+| 18 | 关于固定资产和在建工程 | 通用问题 | 299-316 | explicit_reply_marker | [Q18 关于固定资产和在建工程.md](Q18 关于固定资产和在建工程.md) |

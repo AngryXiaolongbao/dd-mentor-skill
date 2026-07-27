@@ -6,16 +6,15 @@ Set the knowledge root with:
 
 `DDBIBLE_KNOWLEDGE_ROOT`
 
-If the environment variable is absent, the skill looks for `<skill-directory>/knowledge`. The GitHub package intentionally excludes proprietary manuals and regulatory source documents.
+If the environment variable is absent, the skill looks for `<skill-directory>/knowledge`. The GitHub package includes rewritten teaching guidance and public regulatory inquiry-and-response records. It excludes original proprietary manual text.
 
 ## Modules
 
 | Module | Path | Purpose |
 | --- | --- | --- |
 | Root index | `README.md` | Module overview and counts |
-| IPO manuals | `ipo_dd_manuals/` | Baseline IPO and financial verification procedures |
-| General manual | `general_dd_manuals/` | Cross-transaction diligence framework |
-| Industry guide | `industry_classification_guidance/` | Legacy industry classification reference |
+| IPO topic guide | `ipo_dd_manuals/IPO-RW-001 专项尽调教学指南.md` | Rewritten IPO and financial verification guidance |
+| General framework | `general_dd_manuals/GEN-RW-001 通用尽调教学框架.md` | Rewritten cross-transaction diligence framework |
 | Regulatory cases | `review_comments/` | One exchange question and its corresponding reply per Markdown file |
 | SSE index | `review_comments/上交所监管问询及回复索引.md` | SSE project index |
 | SZSE index | `review_comments/深交所监管问询及回复索引.md` | SZSE project index |
@@ -48,7 +47,7 @@ The body contains `分类信息`, `问询`, and `回复`.
 
 Use the sources in this order:
 
-1. Read `general_dd_manuals/GEN-001 通用尽调手册.md` for the complete applicable baseline.
+1. Read `general_dd_manuals/GEN-RW-001 通用尽调教学框架.md` for the complete applicable baseline.
 2. Read `ipo_dd_manuals/README.md`, then retrieve each relevant topic-specific practice standard for business and financial detail.
 3. Search `review_comments/` for industry, business-model, and market-specific regulatory focus.
 

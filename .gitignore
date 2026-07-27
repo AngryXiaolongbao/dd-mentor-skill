@@ -1,6 +1,6 @@
-# Local or proprietary knowledge
-skills/dd-bible/knowledge/
-knowledge/
+# Local or proprietary additions
+skills/dd-bible/knowledge/private/
+knowledge/private/
 
 # Project material and generated output
 project-data/
