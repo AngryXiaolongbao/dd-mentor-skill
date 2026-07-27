@@ -100,6 +100,11 @@ def scan_regulatory(
     results: list[dict[str, object]] = []
     for path in (root / "review_comments").rglob("Q*.md"):
         text = path.read_text(encoding="utf-8-sig", errors="replace")
+        company = value(text, "company")
+        source_file = value(text, "source_file")
+        source_pages = value(text, "source_pages")
+        if not company or not source_file or not source_pages:
+            continue
         score = score_record(text, needles, market, industry, scope)
         if score <= 0:
             continue
@@ -108,14 +113,14 @@ def scan_regulatory(
                 "module": "regulatory_case",
                 "score": score,
                 "path": str(path),
-                "company": value(text, "company"),
+                "company": company,
                 "project": value(text, "project"),
                 "market": value(text, "market"),
                 "industry": value(text, "industry_name"),
                 "topic": value(text, "topic"),
                 "scope": value(text, "question_scope"),
-                "source_file": value(text, "source_file"),
-                "source_pages": value(text, "source_pages"),
+                "source_file": source_file,
+                "source_pages": source_pages,
                 "excerpt": excerpt(text, needles, max_chars),
             }
         )

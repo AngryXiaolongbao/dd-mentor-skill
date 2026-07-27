@@ -58,7 +58,14 @@ Separate this layer from the manual-derived checklist. For each direction includ
 - the latest available period reviewed;
 - whether the pattern is recurring or based on a limited number of cases;
 - what regulators asked, what evidence was used in replies, and how to prepare;
-- the cited inquiry-and-reply records.
+- the cited inquiry-and-reply records, with a specific company name, source file, and exact page or page range for every case.
+
+Present cases in a structure that preserves the one-to-one mapping:
+
+| 公司名称 | 项目/板块 | 监管问题 | 回复要点及所用证据 | 对本项目的启示 | 引用文件 | 页码 |
+| --- | --- | --- | --- | --- | --- | --- |
+
+Do not use “某公司” or combine several companies under one shared citation. If `公司名称`、`引用文件` or `页码` cannot be verified from the opened record, omit the case rather than presenting it with an incomplete citation.
 
 Prefer cases from the latest available three to five years and disclose the knowledge-base cutoff. Do not label older or undated material as “recent”.
 

@@ -59,3 +59,5 @@ For regulatory retrieval:
 - Prefer records from the latest available three to five years and disclose the actual date range and corpus cutoff.
 - Treat repeated questions across multiple projects as a regulatory pattern; label isolated cases accordingly.
 - Open the returned source file before citing it. Search results are candidate evidence, not final conclusions.
+- Cite a record as a case only when `company`, `source_file`, and `source_pages` are all present and verified.
+- In the answer, show the specific company name, source file, and exact page or page range together for each individual case.
