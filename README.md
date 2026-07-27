@@ -1,59 +1,101 @@
-# DD Bible — Transaction DD Copilot
+# DD Bible — 交易尽调智能助手
 
-DD Bible is a teaching-first Codex skill for project-specific due diligence planning. It guides beginners through a multi-round planning conversation, explains the purpose and evidence chain behind each diligence requirement, develops risk thinking, and dynamically updates the plan as new facts emerge.
+DD Bible 是一个以 **Teaching（教学）** 为核心的 Codex Skill，用于针对具体项目规划尽职调查工作。它会像一名有经验的项目经理一样，通过多轮对话帮助使用者理解项目，解释每项尽调要求背后的原因和证据链，培养风险分析思维，并随着新信息和异常事项的出现动态调整尽调计划。
 
-## Core workflow
+## 核心能力
 
-1. **Planning** — establish the project profile and scope.
-2. **Teaching** — explain what each requirement proves and why it matters.
-3. **Risk Thinking** — connect facts, risks, evidence, procedures, red flags, and follow-up branches.
-4. **Dynamic Update** — revise the scope and risk analysis when new information appears.
+1. **Planning｜尽调规划**  
+   了解项目类型、上市计划、行业、业务模式和规模，建立项目画像并确定尽调范围。
 
-The output is organized into:
+2. **Teaching｜尽调教学**  
+   不仅告诉使用者“需要查什么”，还会解释“要证明什么、为什么要查、不查会有什么风险”。
 
-- complete applicable baseline matters from a general due diligence manual;
-- topic-specific business and financial procedures;
-- recent industry, business-model, and market-specific regulatory focus.
+3. **Risk Thinking｜风险思维**  
+   将项目事实、风险假设、证据、核查程序、异常信号和后续措施连接成完整逻辑链。
 
-## Information-security notice
+4. **Dynamic Update｜动态更新**  
+   根据后续取得的资料、项目变化和核查发现，调整事项、核查深度和优先级，并解释调整原因。
 
-Do not upload or provide state secrets, work secrets, trade secrets, sensitive personal information, or other content that is not authorized for disclosure. Complete sufficient and effective desensitization before using any project material, and comply with your organization's confidentiality and information-security requirements.
+## 尽调知识结构
 
-## Repository contents
+DD Bible 按三个层次生成尽调计划：
 
-The installable skill is located at `skills/dd-bible/`.
+- 根据通用尽调教学框架，列出全部适用的基础尽调事项；
+- 根据业务和财务专项指南，补充资料要求、核查程序和异常分支；
+- 根据行业特点、业务模式和申报板块，检索近年监管问询及回复，识别监管关注方向。
 
-This repository includes:
+每项重要尽调事项遵循以下逻辑：
 
-- rewritten, teaching-oriented general and topic-specific diligence guidance;
-- public exchange inquiry-and-response records converted to searchable Markdown.
+`项目事实 → 风险假设 → 证据链 → 核查程序 → 异常信号 → 后续措施`
 
-This repository intentionally excludes:
+## 信息安全提示
 
-- original proprietary due diligence manual text;
-- client or project data;
-- local indexes, logs, caches, and generated search results.
+> 重要提示：为保障信息安全，请勿上传或提供任何涉及国家秘密、工作秘密、商业秘密、个人敏感信息或其他未经授权披露的内容；如确需使用相关材料，请务必在上传前完成充分、有效的脱敏处理，并确认符合所在机构的保密及信息安全要求。
 
-## Knowledge-base configuration
+## 仓库内容
 
-The packaged knowledge base is located at:
+可安装的 Skill 位于：
+
+`skills/dd-bible/`
+
+本仓库包括：
+
+- DD Bible Skill 指令及多轮对话流程；
+- Teaching 教学框架和标准输出结构；
+- 改写后的通用尽调教学框架；
+- 改写后的 IPO 业务及财务专项尽调指南；
+- 转换为可检索 Markdown 的公开监管问询及回复；
+- 本地知识库检索脚本。
+
+本仓库不包括：
+
+- 原始专有尽调手册文本；
+- 客户、供应商或具体项目资料；
+- 工作底稿、内部日志和中间处理文件；
+- 密钥、账户信息或本地环境配置。
+
+## 知识库
+
+仓库内置知识库位于：
 
 `skills/dd-bible/knowledge/`
 
-You may override it by setting `DDBIBLE_KNOWLEDGE_ROOT` to another authorized local knowledge base. Expected modules are documented in `skills/dd-bible/references/knowledge-map.md`.
+也可以通过环境变量 `DDBIBLE_KNOWLEDGE_ROOT` 指向其他经合法授权的本地知识库。知识库目录和字段说明见：
 
-Only use materials that you are authorized and licensed to store, process, and cite.
+`skills/dd-bible/references/knowledge-map.md`
 
-## Install
+使用者应确保其有权存储、处理和引用知识库中的资料。
 
-Copy `skills/dd-bible/` into your Codex skills directory:
+## 安装方法
+
+将 `skills/dd-bible/` 复制到 Codex Skill 目录：
 
 `$CODEX_HOME/skills/dd-bible`
 
-When `CODEX_HOME` is not set, use the default Codex skills directory for your operating system.
+如果没有设置 `CODEX_HOME`，请使用当前操作系统默认的 Codex Skill 目录。
 
-Restart or refresh Codex so it discovers the skill, then invoke `$dd-bible`.
+刷新或重新启动 Codex，使其识别该 Skill，然后调用：
 
-## Limitations
+`$dd-bible`
 
-This skill supports diligence planning and professional training. It does not replace audit, legal, valuation, regulatory, or investment advice. Rewritten guidance is educational material, and regulatory examples do not create universal requirements.
+首次调用时，DD Bible 会先提示信息安全要求，并在使用者确认后开始了解项目。
+
+## 使用方式
+
+使用者无需事先掌握专业尽调术语，可以从公司名称、主要业务、项目目的、是否计划上市和大致规模开始介绍，也可以上传已经充分脱敏的现有项目资料。
+
+DD Bible 会通过少量、分轮的问题逐步完善项目画像。信息充分后，将形成：
+
+- 项目理解及关键假设；
+- 三至五项重点尽调方向；
+- 完整基础尽调清单；
+- 业务及财务专项核查细节；
+- 行业和近年监管关注；
+- 每项要求背后的原因、风险和证据链；
+- 异常事项的后续核查路径。
+
+## 使用边界
+
+本 Skill 用于尽调规划、风险分析和专业培训，不能替代审计、法律、估值、监管或投资意见。
+
+改写后的尽调指南属于教学材料；监管问询案例反映特定项目的审核关注，不应被理解为适用于所有项目的统一强制要求。对外引用时，应回查相应公开披露文件和现行有效规则。
