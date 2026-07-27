@@ -14,6 +14,7 @@ tags:
   - 通用问题
   - 信息技术--硬件设备--电子设备、仪器和元件--电子元件
 source_file: D97_RAS_202601_222140A309DA4218ED42BFA3C1340DC2D1AE70.pdf
+source_title: 关于惠科股份有限公司首次公开发行股票并在主板上市申请文件的第二轮审核问询函的回复
 source_format: PDF
 source_pages: 66-69
 boundary_basis: PDF目录标题；explicit_reply_marker

@@ -94,7 +94,7 @@ Read [references/knowledge-map.md](references/knowledge-map.md) and retrieve in 
 2. **Topic detail**: use the topic-specific practice manuals in `ipo_dd_manuals/` to expand the relevant business and financial workstreams, including evidence, procedures, samples, reconciliations, and exception follow-up.
 3. **Recent regulatory focus**: run `scripts/search_knowledge.py` against `review_comments/` using the industry, business model, market, and key topics. Prefer the latest available three to five years, state the actual source period and corpus cutoff, and distinguish recurring attention from a one-off case.
 
-Use `scripts/search_knowledge.py` instead of loading the full regulatory corpus. Narrow by Market and Wind industry when useful, but do not exclude strong business-model analogies. Read returned Markdown records around the cited sections before relying on them. For every case selected, verify the exact `company`, `source_file`, and `source_pages` values in the opened record.
+Use `scripts/search_knowledge.py` instead of loading the full regulatory corpus. Narrow by Market and Wind industry when useful, but do not exclude strong business-model analogies. Read returned Markdown records around the cited sections before relying on them. For every case selected, verify the exact `company`, `source_title`, `source_file`, and `source_pages` values in the opened record.
 
 If retrieval returns no strong source, say so and mark the item as professional judgment rather than a sourced requirement.
 
@@ -143,8 +143,10 @@ When a new fact or exception arrives:
 
 ## Source and citation rules
 
-- Every regulatory case stated in an answer must visibly identify the specific company, the cited source file, and the exact source page or page range.
-- Treat `company`, `source_file`, and `source_pages` as mandatory citation fields. If any field is absent or uncertain, do not present that record as a case.
+- Every regulatory case stated in an answer must visibly identify the specific company, the cited source document, and the exact source page or page range.
+- Display the cited document using the formal title printed on the source document's first page, enclosed in Chinese square brackets: `【首页正式文件名】`. Typical forms include `【关于××公司××的回复】` and `【关于××的回复】`.
+- Preserve the first-page wording. Do not replace it with a local Markdown filename, an internal `source_id`, a coded PDF filename, an archive name, or a shortened title invented from the company and project.
+- Treat `company`, `source_title`, `source_file`, and `source_pages` as mandatory citation fields. `source_title` is the verified first-page formal title; `source_file` is retained only for internal traceability and must not be shown as the cited document name. If any field is absent or uncertain, do not present that record as a case.
 - Never replace a known company name with “某公司”, “某发行人”, or another anonymous label.
 - When several cases support one pattern, list each company and its file/page citation separately so the mapping remains unambiguous.
 - Cite the narrowest relevant Markdown record only after opening it and checking its metadata and cited section; search results alone are candidate evidence.
@@ -153,7 +155,7 @@ When a new fact or exception arrives:
 - Do not fabricate regulations, cases, page numbers, or source conclusions.
 - Prefer paraphrase; quote only short passages needed to preserve technical meaning.
 
-Before sending an answer that contains cases, audit every case row or paragraph and remove any entry that lacks a specific company name, source file, or page citation.
+Before sending an answer that contains cases, audit every case row or paragraph and remove any entry that lacks a specific company name, a verified first-page document title in `【】`, or an exact page citation.
 
 ## Quality and safety
 

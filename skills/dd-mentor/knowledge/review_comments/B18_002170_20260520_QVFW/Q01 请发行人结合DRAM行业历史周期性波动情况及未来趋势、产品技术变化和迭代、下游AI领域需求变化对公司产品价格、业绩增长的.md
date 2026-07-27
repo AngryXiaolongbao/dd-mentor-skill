@@ -18,6 +18,7 @@ tags:
   - 核心产品
   - 产品竞争力
 source_file: B18_002170_20260520_QVFW.pdf
+source_title: 关于长鑫科技集团股份有限公司首次公开发行股票并在科创板上市申请文件的审核中心意见落实函的回复
 source_format: PDF
 source_pages: 3-11
 boundary_basis: PDF目录标题；toc_title_plus_explicit_reply_marker

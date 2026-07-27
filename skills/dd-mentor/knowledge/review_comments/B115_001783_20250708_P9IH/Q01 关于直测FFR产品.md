@@ -16,6 +16,7 @@ tags:
   - 核心产品
   - 产品竞争力
 source_file: B115_001783_20250708_P9IH.pdf
+source_title: 关于深圳北芯生命科技股份有限公司首次公开发行股票并在科创板上市申请文件的第二轮审核问询函的回复
 source_format: PDF
 source_pages: 4-35
 boundary_basis: PDF目录标题；explicit_reply_marker

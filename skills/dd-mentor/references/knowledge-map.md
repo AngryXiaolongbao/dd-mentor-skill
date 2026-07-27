@@ -37,6 +37,7 @@ The YAML frontmatter normally includes:
 - `topic`
 - `question_scope` (`通用问题` or `行业特有问题`)
 - `tags`
+- `source_title` (the verified formal document title printed on the source document's first page)
 - `source_file`
 - `source_pages`
 - `boundary_basis`
@@ -59,5 +60,6 @@ For regulatory retrieval:
 - Prefer records from the latest available three to five years and disclose the actual date range and corpus cutoff.
 - Treat repeated questions across multiple projects as a regulatory pattern; label isolated cases accordingly.
 - Open the returned source file before citing it. Search results are candidate evidence, not final conclusions.
-- Cite a record as a case only when `company`, `source_file`, and `source_pages` are all present and verified.
-- In the answer, show the specific company name, source file, and exact page or page range together for each individual case.
+- Cite a record as a case only when `company`, `source_title`, `source_file`, and `source_pages` are all present and verified.
+- In the answer, show the specific company name, `source_title` enclosed in `【】`, and exact page or page range together for each individual case.
+- Use `source_file` only to locate and audit the underlying record. Never display its coded PDF filename in place of the first-page formal title.
