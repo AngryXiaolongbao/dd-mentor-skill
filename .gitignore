@@ -1,0 +1,25 @@
+# Local or proprietary knowledge
+skills/dd-bible/knowledge/
+knowledge/
+
+# Project material and generated output
+project-data/
+uploads/
+outputs/
+logs/
+*.log
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python and editor caches
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
