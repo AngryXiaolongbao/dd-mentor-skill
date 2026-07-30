@@ -19,6 +19,7 @@ For each P0/P1 item or requested explanation, cover:
 9. **与本项目的关系** — connect the lesson to known project facts.
 10. **监管视角** — explain why an exchange or reviewer may care, with a source when available.
 11. **新人常见误区** — correct one likely misconception when useful.
+12. **依据及对应关注内容** — never show only a manual number; identify the source file, section or matter title, and explain which diligence concern that source supports.
 
 ## Causal-chain rule
 

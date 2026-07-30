@@ -11,6 +11,7 @@ This packaged knowledge base contains two source layers:
 | --- | --- | --- |
 | General diligence framework | `general_dd_manuals/` | Teaching framework |
 | IPO topic guides | `ipo_dd_manuals/` | Topic-specific guidance |
+| M&A and financing guides | `ma_financing_dd_manuals/` | M&A, equity financing, and debt financing DDQ guidance |
 | Regulatory inquiries and replies | `review_comments/` | Directly retained public records |
 
 ## Use boundary

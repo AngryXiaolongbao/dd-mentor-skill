@@ -19,6 +19,9 @@ ALIASES = {
     "供应商": ["供应商", "采购", "外协", "委外加工"],
     "客户": ["客户", "销售", "终端客户", "客户集中"],
     "毛利": ["毛利", "毛利率", "成本", "定价"],
+    "并购": ["并购", "收购", "交易结构", "股权收购", "资产收购", "控制权变更", "交割"],
+    "融资": ["融资", "投资", "资金用途", "股权融资", "债务融资", "可转债", "投资人权利", "现金跑道"],
+    "估值": ["估值", "盈利质量", "营运资金", "净债务", "预测", "现金流", "交易价格"],
 }
 
 
@@ -138,6 +141,7 @@ def scan_manuals(
     results: list[dict[str, object]] = []
     directories = [
         root / "ipo_dd_manuals",
+        root / "ma_financing_dd_manuals",
         root / "general_dd_manuals",
         root / "industry_classification_guidance",
     ]
