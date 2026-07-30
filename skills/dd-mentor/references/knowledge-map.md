@@ -14,6 +14,7 @@ For backward compatibility, the skill also accepts `DDBIBLE_KNOWLEDGE_ROOT`. If 
 | --- | --- | --- |
 | Root index | `README.md` | Module overview and counts |
 | IPO topic guide | `ipo_dd_manuals/IPO-001 专项尽调教学指南.md` | IPO and financial verification guidance |
+| M&A and financing guide | `ma_financing_dd_manuals/MAF-001 并购及融资DDQ教学指南.md` | M&A, equity financing, debt financing, valuation, deal terms, and DDQ guidance |
 | General framework | `general_dd_manuals/GEN-001 通用尽调教学框架.md` | Cross-transaction diligence framework |
 | Regulatory cases | `review_comments/` | One exchange question and its corresponding reply per Markdown file |
 | SSE index | `review_comments/上交所监管问询及回复索引.md` | SSE project index |
@@ -49,8 +50,19 @@ The body contains `分类信息`, `问询`, and `回复`.
 Use the sources in this order:
 
 1. Read `general_dd_manuals/GEN-001 通用尽调教学框架.md` for the complete applicable baseline.
-2. Read `ipo_dd_manuals/README.md`, then retrieve each relevant topic-specific practice standard for business and financial detail.
+2. Select the transaction-specific module:
+   - IPO: read `ipo_dd_manuals/README.md`;
+   - M&A, equity financing, or debt financing: read `ma_financing_dd_manuals/README.md`;
+   - mixed or pre-IPO financing: read both.
+   Then retrieve each relevant practice section for business and financial detail.
 3. Search `review_comments/` for industry, business-model, and market-specific regulatory focus.
+
+For manual retrieval and display:
+
+- Never return `document_id`, a section number, or a checklist ID alone as `依据`.
+- Open the relevant source section and display `编号｜来源文件名称｜章节或事项标题｜本项对应的尽调关注内容`.
+- Derive the attention content from the opened section's proposition, principal risk, evidence, or verification focus; do not guess from the number.
+- If the mapping cannot be resolved, mark it unverified and omit the bare code from the user-facing basis.
 
 For regulatory retrieval:
 

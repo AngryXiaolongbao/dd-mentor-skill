@@ -45,14 +45,24 @@ After each answer, silently update:
 
 Mark each item as confirmed, inferred, or unknown.
 
+When materials are uploaded for a new project, initialize:
+
+- `planning_discussion_gate = pending`;
+- `discussion_phase = understanding_calibration`;
+- `discussion_bypass = false`.
+
+Material completeness does not make this gate complete.
+
 ## State 3: adaptive follow-up
 
-Respond in this order:
+Read [round-response-format.md](round-response-format.md) and use it for every question round. After each user response, first update the rolling risk map and the affected items in all three diligence layers, then ask the next questions. Respond in this order:
 
 1. Acknowledge the useful facts learned.
 2. Reflect one concise inference when helpful.
 3. Explain briefly why the remaining uncertainty matters to diligence planning.
 4. Ask one to three broad questions that most affect top-level scope and cannot be answered from available public information or uploads.
+5. For each question, explain why a reply is needed and which risk, evidence chain, priority, or diligence layer it changes.
+6. End with the standard guidance that the user may answer `第 N 题请建议` or `请建议`.
 
 Example:
 
@@ -75,6 +85,64 @@ Bad follow-up:
 - generating a generic checklist immediately;
 - asking several questions already answered.
 
+### Material-assisted discussion path
+
+In Plan mode, do not move directly from document extraction to State 5 or State 6. Complete these phases on separate user turns by default:
+
+#### Phase 1: understanding calibration
+
+On the first substantive response after reading the materials:
+
+1. identify the materials reviewed and material limitations;
+2. reflect the extracted project purpose, business model, scale, and key financial facts;
+3. distinguish document statements, inferences, conflicts, and unknowns;
+4. explain one or two ways a mistaken understanding would distort the diligence scope;
+5. ask one to three correction or interpretation questions.
+
+End the response after the questions. Do not append the full checklist, full regulatory analysis, or final diligence recommendations.
+
+#### Phase 2: risk interpretation
+
+After the next user response:
+
+1. update the shared facts;
+2. discuss the two to four most material business or financial signals;
+3. show at least one plausible benign explanation and one adverse risk hypothesis for each material ambiguity;
+4. explain what evidence would distinguish them;
+5. ask one to three judgment questions about transaction purpose, management assertions, materiality, or priority.
+
+End with the next questions or a request for the user's view. Do not yet deliver the first full checklist.
+
+#### Phase 3: scope alignment
+
+After the next user response:
+
+1. present the provisional P0/P1 risk map;
+2. explain how the user's answers changed the proposed scope;
+3. identify the workstreams that will receive deeper or lighter coverage and why;
+4. ask the user to confirm or adjust the proposed emphasis.
+
+After the user responds, set `planning_discussion_gate = completed` and move to State 5.
+
+Do not use these phases to repeat questions answered by the materials. The dialogue should surface interpretation, competing hypotheses, priorities, and scope choices. Every phase must include a short Teaching explanation.
+
+Use the complete fixed round format in every phase. After the user responds, show how that feedback changed the risk map, **基础尽调事项**, **业务及专项尽调细节**, and **行业、业务特点及近年监管关注** before asking the next questions.
+
+Only an explicit instruction such as `直接输出第一版`, `跳过讨论`, or a clear equivalent sets `discussion_bypass = true`. An upload, `继续`, `请分析`, or a complete-looking information memorandum does not. If bypassed, state the assumptions and which discussion checkpoints were compressed before producing the plan.
+
+### Suggestion path
+
+When the user replies `请建议` or asks for a suggestion on a numbered question:
+
+1. distinguish the suggestion from confirmed user feedback;
+2. provide a provisional answer based on confirmed project facts and identified sources;
+3. explain the basis, confidence, material uncertainty, and alternative branch;
+4. use a conservative planning assumption when the fact cannot be inferred safely;
+5. update the rolling risk map and all three diligence layers;
+6. continue to the next phase without requiring the user to invent an answer.
+
+Do not use `请建议` as permission to fabricate facts or bypass the remaining teaching dialogue.
+
 ## State 4: sufficiency check
 
 Information is sufficient for a baseline checklist when:
@@ -85,6 +153,8 @@ Information is sufficient for a baseline checklist when:
 - approximate scale is known or reasonably estimated.
 
 Role, venue, stage, and reporting period must also be known when they materially change the work. Do not hold the checklist back while waiting for customer, supplier, transaction, fund-flow, or exception details.
+
+For a material-assisted Plan, factual sufficiency and discussion sufficiency are separate. Even if all listed facts are available, do not move to the first full checklist until `planning_discussion_gate = completed` or `discussion_bypass = true`.
 
 ## State 5: shared summary
 

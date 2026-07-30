@@ -1,8 +1,36 @@
 # Output schema
 
+In every section, an `依据` field must comply with the manual-basis and regulatory-case citation rules in `SKILL.md`. Never output only a number or code. Resolve it into the source name, section or item title, and the corresponding diligence attention content.
+
+## 0. Material-assisted planning discussion
+
+In Plan mode with uploaded materials, do not use the full output schema until the three-phase planning discussion in [conversation-engine.md](conversation-engine.md) is complete or the user explicitly requests immediate output.
+
+During the discussion, use the complete fixed structure in [round-response-format.md](round-response-format.md). It must include:
+
+- the user-feedback and project-understanding update;
+- Teaching on why the feedback changes diligence;
+- the rolling risk map;
+- provisional snapshots for **基础尽调事项**, **业务及专项尽调细节**, and **行业、业务特点及近年监管关注**;
+- open items and provisional assumptions;
+- one to three questions, why each needs an answer, what each answer changes, and the `请建议` option.
+
+The three phases are understanding calibration, risk interpretation, and scope alignment. Do not append the first full checklist merely because the materials appear complete.
+
 ## 1. Project profile
 
 Begin with “我对项目的理解”. Summarize the purpose, listing intent, industry/products, business model, approximate scale, stage, role, known risk flags, assumptions, and missing facts in plain language.
+
+## 1A. Textual-material extraction (when materials are provided)
+
+Apply [textual-material-extraction.md](textual-material-extraction.md) whenever the user uploads or pastes textual materials. Before continuing the analysis, present:
+
+1. the document scope, dates, versions, and extraction limitations;
+2. standardized financial data with period, entity, perimeter, currency, unit, status, and exact source location;
+3. structured business facts with fact status, source location, scope impact, and verification need;
+4. conflicting figures or assertions, important missing information, and unsupported claims.
+
+Then carry the extracted data and facts into the project profile, financial anomaly analysis, priority map, three-layer checklist, follow-up questions, completeness review, and risk-control-versus-defense hearing. Do not provide only a narrative summary.
 
 ## 2. Priority map
 
@@ -11,6 +39,17 @@ Begin with “我对项目的理解”. Summarize the purpose, listing intent, i
 - **P2 — baseline**: standard diligence required for completeness.
 
 Explain why each P0/P1 area is elevated for this project. A priority label without the project fact and risk logic is invalid.
+
+## 2A. Financial indicators and anomaly analysis (when data is provided)
+
+Apply [financial-analysis-framework.md](financial-analysis-framework.md) whenever usable financial data is available. Present:
+
+1. the main applicable indicators, with formulas, periods, units, perimeter, trends, and data limitations;
+2. quantified anomalies classified as `已确认异常`, `异常迹象`, or `数据限制`, with both plausible normal and adverse explanations;
+3. anomaly-driven targeted diligence advice mapped to the relevant Layer 1 and Layer 2 matters;
+4. teaching cards for every P0/P1 anomaly.
+
+Carry material financial anomalies into the priority map, completeness review, risk-control-versus-defense hearing, open items, and dynamic update. Do not present a financial signal as proof, use an unsourced peer benchmark, or provide generic advice without an evidence and procedure chain.
 
 ## 3. Layer 1 — Complete baseline checklist
 
@@ -25,12 +64,12 @@ For every item include:
 - **先取得哪些资料**
 - **怎样核查**
 - **发现异常后怎么办**
-- **知识库依据**
+- **知识库依据**（编号、来源文件、章节或事项标题，以及该编号对应的尽调关注内容）
 
 Use a table only when it remains easy for a beginner to read:
 
-| 优先级 | 尽调事项 | 要证明什么 | 为什么要查及主要风险 | 主要资料与程序 | 异常信号及下一步 |
-| --- | --- | --- | --- | --- | --- |
+| 优先级 | 尽调事项 | 要证明什么 | 为什么要查及主要风险 | 主要资料与程序 | 异常信号及下一步 | 依据及对应尽调关注内容 |
+| --- | --- | --- | --- | --- | --- | --- |
 
 Never list a diligence requirement without explaining why it exists.
 
@@ -45,7 +84,7 @@ For each relevant baseline workstream, use the applicable topic-specific practic
 - verification procedures and sampling considerations;
 - common exception signals;
 - escalation and follow-up procedures;
-- the exact manual source and section.
+- the exact manual number, source name, section title, and the corresponding diligence attention content.
 
 Map each detail back to its Layer 1 baseline matter. Avoid duplicating the same requirement as an unrelated new item.
 
@@ -82,6 +121,8 @@ Before displaying Layer 1 or Layer 2, complete the three internal reviews requir
 | 第三轮 | 风控挑战及项目答辩 | 项目事实、P0/P1风险、监管关注及前两轮结果 | 经挑战、答辩和风控裁定后纠正的优先级、逻辑、引用或范围问题 | 未解决议题及其补充证据和升级路径 |
 
 Do not use generic statements such as “已复核，无遗漏” without identifying the sources compared and any remaining limitation. If a review identifies a material issue, revise the checklist and rerun the affected round before presenting the result.
+
+In `对照依据`, `项目答辩及依据`, and any Manual-basis field below, expand every numbered reference into its source name, section or matter title, and the diligence attention content relevant to the conclusion.
 
 ## 7. Risk-control and defense hearing minutes
 
