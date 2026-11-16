@@ -75,3 +75,12 @@ For regulatory retrieval:
 - Cite a record as a case only when `company`, `source_title`, `source_file`, and `source_pages` are all present and verified against the title-resolution rule in `SKILL.md`.
 - In the answer, show the specific company name, `source_title` enclosed in `【】`, and exact page or page range together for each individual case.
 - Use `source_file` only to locate and audit the underlying record. Never display its coded PDF filename in place of the first-page formal title.
+
+## Retrieval controls and limitations
+
+- Market/industry/scope are ranking preferences by default, not filters. `--strict-market --market 主板` enforces exact regulatory market metadata and excludes title/market conflicts; spell the market as stored in the records. Market tags still require source verification.
+- `--date-from YYYY-MM-DD --date-to YYYY-MM-DD` inclusively filter regulatory records by `source_date`, `publication_date`, or `document_date` in frontmatter. These fields must be verified against the original publication; never populate them from filenames without verification. Missing/invalid dates are excluded from date-filtered results and counted. Do not silently retry without dates and describe the results as recent.
+- `--sort date` sorts dated candidates newest first, undated last; `--sort relevance` is default. Date filters do not filter manuals. Missing metadata in existing corpus is a limitation to report, not permission to guess dates.
+- Read `regulatory_stats`, `total_matches`, `truncated`, and `coverage_note`. Zero matches means no qualifying records in the search, not no risk. The known date range is not a verified complete corpus cutoff when `date_range_complete` is false.
+- Topic matches are required before preference boosts; blank industry metadata cannot earn an industry score. `metadata_warnings` candidates require original-document verification before use.
+- Search examples: `python3 scripts/search_knowledge.py --query "收入 回款" --module review --market 主板 --strict-market --date-from 2023-01-01 --date-to 2026-11-17 --sort date`. Replace dates with the actual task range. If date-filtered results are empty, disclose that fact; undated candidates may be retrieved separately for source verification only.

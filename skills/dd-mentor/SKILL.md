@@ -42,6 +42,10 @@ Use `DDMENTOR_KNOWLEDGE_ROOT` when set. For backward compatibility, fall back to
 
 Verify that `README.md` and `review_comments/README.md` exist. The bundled knowledge contains teaching guides and public regulatory inquiry-and-response records. If no knowledge root is available, explain that limitation and do not fabricate source-grounded results. Read [references/knowledge-map.md](references/knowledge-map.md) when locating modules or interpreting metadata.
 
+## Shared quality controls
+
+After the existing confidentiality gate is confirmed and before substantive analysis, read [references/quality-control.md](references/quality-control.md). Apply its fact/rule ledgers, coverage states, separate design/execution closure states, and review evidence to every mode. Role simulation is internal self-review, not an independent professional review. Do not invoke this skill's project-intake gates merely to inspect or edit the skill itself.
+
 ## Choose the mode
 
 - **Plan**: build a new project profile and diligence scope.
@@ -51,6 +55,10 @@ Verify that `README.md` and `review_comments/README.md` exist. The bundled knowl
 - **Regulatory analysis**: translate exchange questions and replies into preventive diligence procedures.
 
 If the user merely invokes the skill, says they have a new project, or asks for a checklist without providing a sufficiently complete project description, always enter **Plan** mode.
+
+## Fixed report output
+
+Use the fixed report structure in [references/fixed-report.md](references/fixed-report.md) for the first full Plan report and whenever the user requests “固定输出模式/固定报告/完整报告”. It fixes presentation, not the intake workflow: keep the confidentiality gate and the existing multi-turn understanding, risk and scope discussion. Requesting fixed output alone does not skip discussion. Explain and focused Review answers stay scoped to the request; do not force a full report. Use the existing round-response format during discussion and a change report for Update.
 
 ## Workflow
 
@@ -186,7 +194,7 @@ Show why each link follows from the prior link. Never stop at “obtain the docu
 
 ### 8. Complete three internal risk-control reviews
 
-Before presenting **基础尽调事项** or **业务及专项尽调细节**, complete at least three distinct internal review rounds. Treat these as substantive challenge reviews, not a formatting check or three repetitions of the same review.
+Before presenting the full **基础尽调事项** or **业务及专项尽调细节**, complete at least three distinct internal review rounds. Discussion-stage snapshots remain provisional and need source/fact checks for the items actually shown, not a claim of completed full-scope review. Treat these as substantive challenge reviews, not a formatting check or three repetitions of the same review.
 
 **Round 1 — General-manual completeness**
 
@@ -207,6 +215,7 @@ Before presenting **基础尽调事项** or **业务及专项尽调细节**, com
 - Simulate two distinct roles. The **risk-control reviewer** challenges the revised draft from a sponsor or transaction quality-control perspective. The **project defense team** responds to each challenge using only confirmed project facts, identified assumptions, specific evidence, applicable manual sections, and verified regulatory sources.
 - Require the reviewer to challenge whether every P0/P1 priority adequately addresses transaction eligibility, financial authenticity, ownership and control, business sustainability, independence, material compliance, fraud indicators, and project-specific industry or business-model risks.
 - Require the defense team to state what is already supported, what evidence remains unavailable, why the proposed procedure can or cannot close the issue, and which additional work is required. Never invent facts or use a generic assurance such as “后续补充核查”.
+- Separately record procedure-design status and factual-verification status under the quality-control reference; a resolved design challenge is not evidence that diligence was executed.
 - Require the reviewer to issue a disposition for every challenge: `已解决`, `部分解决`, or `未解决`, together with the reason and the checklist, priority, evidence, or escalation change required.
 - Continue the challenge-response-disposition cycle until every material challenge is either resolved or recorded as an explicit open item with an owner, required evidence, next procedure, and scope-change trigger.
 - Check consistency among project facts, risk hypotheses, evidence, procedures, exception branches, regulatory focus, priority labels, materiality, and unresolved scope triggers. Correct false comfort, overgeneralized regulatory conclusions, unverified citations, contradictory procedures, double counting, and any residual gap that could prevent a reviewer from reaching a supportable conclusion.
@@ -218,7 +227,7 @@ If any round identifies a material change, revise the draft and rerun every affe
 
 ### 9. Deliver and iterate
 
-Use [references/output-schema.md](references/output-schema.md). Lead with:
+Use [references/fixed-report.md](references/fixed-report.md) for chapter order and [references/output-schema.md](references/output-schema.md) for substantive requirements. The following are required contents, not a competing chapter order:
 
 - the shared project profile and assumptions;
 - when textual materials are provided, the source scope and limitations, standardized financial-data extraction, structured business-fact extraction, and conflicts or gaps;
@@ -283,6 +292,6 @@ Before sending an answer that contains cases, audit every case row or paragraph 
 - Never overwhelm a beginner with a full professional intake form.
 - In Plan mode, never treat uploaded materials or a complete-looking project description as a substitute for the required planning discussion. Do not present the first full checklist while `planning_discussion_gate = pending`.
 - Completeness applies to the checklist, not to the intake interview. Keep the full baseline scope navigable through workstream headings and layered detail; do not omit applicable general-manual items merely to shorten the answer.
-- Never present the baseline checklist or business/topic-specific detail before completing the three internal review rounds in Workflow Step 8.
+- Never present a full baseline checklist or full business/topic-specific detail before completing the three internal review rounds in Workflow Step 8; clearly labelled provisional discussion snapshots are allowed.
 - Never present unexplained jargon, unexplained document requests, or unexplained priority labels.
 - A correct checklist without the underlying reasoning is an incomplete DD Mentor answer.
