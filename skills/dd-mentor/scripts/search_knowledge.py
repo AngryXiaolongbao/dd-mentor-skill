@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import re
+from datetime import date
 from pathlib import Path
 
 
@@ -25,19 +26,44 @@ ALIASES = {
 }
 
 
+def frontmatter(text: str) -> str:
+    parts = text.lstrip("\ufeff").split("---", 2)
+    return parts[1] if len(parts) == 3 and not parts[0].strip() else ""
+
+
 def value(text: str, key: str) -> str:
-    match = re.search(rf"(?m)^{re.escape(key)}:\s*(.*?)\r?$", text)
-    return match.group(1).strip() if match else ""
+    # Scalar metadata only; never consume the next line or body as a value.
+    match = re.search(rf"(?m)^{re.escape(key)}:[ \t]*(.*?)[ \t]*$", frontmatter(text))
+    raw = match.group(1).strip() if match else ""
+    if raw in {"", "null", "~", "|", ">"}:
+        return ""
+    if len(raw) >= 2 and raw[0] == raw[-1] and raw[0] in "\"'":
+        raw = raw[1:-1]
+    return raw
 
 
 def tags(text: str) -> list[str]:
-    match = re.search(r"(?ms)^tags:\r?\n(?P<items>(?:\s+-\s+.*?\r?\n)+)", text)
-    if not match:
-        return []
-    return [
-        item.strip()
-        for item in re.findall(r"(?m)^\s+-\s+(.*?)\r?$", match.group("items"))
-    ]
+    match = re.search(r"(?m)^tags:[ \t]*\r?\n((?:[ \t]+-[ \t]+[^\n]*\n?)+)", frontmatter(text))
+    return re.findall(r"(?m)^[ \t]+-[ \t]+(.*)", match.group(1)) if match else []
+
+
+def record_date(text: str) -> tuple[str, str]:
+    for key in ("source_date", "publication_date", "document_date"):
+        raw = value(text, key)
+        if raw:
+            try:
+                return date.fromisoformat(raw).isoformat(), key
+            except ValueError:
+                return "", f"invalid:{key}"
+    # A filename date is not evidence of the source publication date.
+    return "", "missing"
+
+
+def metadata_warnings(text: str) -> list[str]:
+    board = value(text, "market")
+    title = value(text, "source_title")
+    title_boards = [b for b in ("创业板", "科创板", "主板", "北交所", "GEM") if b in title]
+    return ["market_title_conflict"] if board and title_boards and board not in title_boards else []
 
 
 def terms(query: str) -> list[str]:
@@ -68,7 +94,7 @@ def score_record(
 ) -> int:
     topic = value(text, "topic").lower()
     tag_text = " ".join(tags(text)).lower()
-    lower = text.lower()
+    lower = (value(text, "topic") + " " + " ".join(tags(text)) + " " + text.split("---", 2)[-1]).lower()
     score = 0
     for term in needles:
         token = term.lower()
@@ -77,12 +103,14 @@ def score_record(
         if token in tag_text:
             score += 8
         score += min(lower.count(token), 5) * 2
+    if score == 0:
+        return 0
     record_market = value(text, "market")
     record_industry = value(text, "industry_name")
     record_scope = value(text, "question_scope")
     if market and market == record_market:
         score += 8
-    if industry and (
+    if industry and record_industry and (
         industry.lower() in record_industry.lower()
         or record_industry.lower() in industry.lower()
     ):
@@ -99,18 +127,41 @@ def scan_regulatory(
     industry: str,
     scope: str,
     max_chars: int,
+    *, strict_market: bool = False, date_from: str = "", date_to: str = "",
+    stats: dict | None = None,
 ) -> list[dict[str, object]]:
     results: list[dict[str, object]] = []
-    for path in (root / "review_comments").rglob("Q*.md"):
+    stats = stats if stats is not None else {}
+    stats.update(scanned=0, missing_citation=0, missing_date=0, invalid_date=0,
+                 metadata_conflicts=0, no_topic_match=0, excluded_market=0,
+                 excluded_date=0, matched=0)
+    dates: list[str] = []
+    for path in sorted((root / "review_comments").rglob("Q*.md")):
+        stats["scanned"] += 1
         text = path.read_text(encoding="utf-8-sig", errors="replace")
+        source_date, date_field = record_date(text)
+        if source_date:
+            dates.append(source_date)
+        else:
+            stats["invalid_date" if date_field.startswith("invalid:") else "missing_date"] += 1
+        warnings = metadata_warnings(text)
+        stats["metadata_conflicts"] += bool(warnings)
         company = value(text, "company")
         source_title = value(text, "source_title")
         source_file = value(text, "source_file")
         source_pages = value(text, "source_pages")
         if not company or not source_title or not source_file or not source_pages:
+            stats["missing_citation"] += 1
             continue
         score = score_record(text, needles, market, industry, scope)
         if score <= 0:
+            stats["no_topic_match"] += 1
+            continue
+        if strict_market and (value(text, "market") != market or warnings):
+            stats["excluded_market"] += 1
+            continue
+        if (date_from or date_to) and (not source_date or (date_from and source_date < date_from) or (date_to and source_date > date_to)):
+            stats["excluded_date"] += 1
             continue
         results.append(
             {
@@ -127,9 +178,16 @@ def scan_regulatory(
                 "source_title": source_title,
                 "source_file": source_file,
                 "source_pages": source_pages,
+                "source_date": source_date or None,
+                "date_field": date_field,
+                "metadata_warnings": warnings,
+                "source_url": value(text, "source_url") or None,
                 "excerpt": excerpt(text, needles, max_chars),
             }
         )
+    stats["matched"] = len(results)
+    stats["known_date_range"] = [min(dates), max(dates)] if dates else None
+    stats["date_range_complete"] = bool(stats["scanned"]) and not (stats["missing_date"] or stats["invalid_date"])
     return results
 
 
@@ -186,7 +244,27 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=12)
     parser.add_argument("--max-chars", type=int, default=500)
     parser.add_argument("--root", type=Path)
+    parser.add_argument("--strict-market", action="store_true", help="Require exact market metadata and exclude title conflicts (regulatory cases only)")
+    parser.add_argument("--date-from", default="", help="Inclusive verified source date YYYY-MM-DD; excludes undated regulatory cases")
+    parser.add_argument("--date-to", default="", help="Inclusive historical cutoff YYYY-MM-DD; excludes undated regulatory cases")
+    parser.add_argument("--sort", choices=["relevance", "date"], default="relevance")
     args = parser.parse_args()
+    if not args.query.strip():
+        parser.error("--query must contain a topic")
+    if args.strict_market and not args.market:
+        parser.error("--strict-market requires --market")
+    for raw in (args.date_from, args.date_to):
+        if raw:
+            try:
+                date.fromisoformat(raw)
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw):
+                    raise ValueError()
+            except ValueError:
+                parser.error("dates must be YYYY-MM-DD")
+    if args.date_from and args.date_to and args.date_from > args.date_to:
+        parser.error("--date-from must not exceed --date-to")
+    if args.max_chars < 1 or args.limit < 0:
+        parser.error("--max-chars must be positive and --limit nonnegative")
 
     root = args.root or Path(
         os.environ.get(
@@ -197,6 +275,7 @@ def main() -> None:
     if not (root / "README.md").exists():
         raise SystemExit(f"DD Mentor knowledge root not found: {root}")
 
+    stats: dict = {}
     needles = terms(args.query)
     results: list[dict[str, object]] = []
     if args.module in {"all", "manuals"}:
@@ -210,19 +289,32 @@ def main() -> None:
                 args.industry,
                 args.scope,
                 args.max_chars,
+                strict_market=args.strict_market, date_from=args.date_from,
+                date_to=args.date_to, stats=stats,
             )
         )
     results.sort(key=lambda item: (-int(item["score"]), str(item["path"])))
-    limit = max(args.limit, 0)
+    if args.sort == "date":
+        results.sort(key=lambda item: str(item.get("source_date") or ""), reverse=True)
+    limit = args.limit
     payload = {
         "query": args.query,
         "expanded_terms": needles,
         "filters": {
-            "market": args.market,
-            "industry": args.industry,
-            "scope": args.scope,
             "module": args.module,
+            "strict_market": args.market if args.strict_market else None,
+            "date_from": args.date_from or None,
+            "date_to": args.date_to or None,
+            "applies_to": "regulatory_case; manuals are not date/market filtered",
         },
+        "ranking_preferences": {
+            "market": args.market, "industry": args.industry, "scope": args.scope,
+            "sort": args.sort,
+        },
+        "regulatory_stats": stats,
+        "total_matches": len(results),
+        "truncated": len(results) > limit,
+        "coverage_note": "Ranked candidates, not a completeness or regulatory-frequency estimate. Missing dates and metadata conflicts require source verification.",
         "result_count": min(len(results), limit),
         "results": results[:limit],
     }

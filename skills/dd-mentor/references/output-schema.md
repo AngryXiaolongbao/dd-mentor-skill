@@ -1,5 +1,7 @@
 # Output schema
 
+For full reports, [fixed-report.md](fixed-report.md) controls chapter order and fixed table fields. This file defines substantive content requirements; do not print its numbered headings as a second competing report. Preserve all applicable content by mapping it into the fixed chapters. [quality-control.md](quality-control.md) controls evidence and closure states.
+
 In every section, an `依据` field must comply with the manual-basis and regulatory-case citation rules in `SKILL.md`. Never output only a number or code. Resolve it into the source name, section or item title, and the corresponding diligence attention content.
 
 ## 0. Material-assisted planning discussion
@@ -53,7 +55,7 @@ Carry material financial anomalies into the priority map, completeness review, r
 
 ## 3. Layer 1 — Complete baseline checklist
 
-Start from `GEN-001 通用尽调手册`. List every applicable baseline diligence matter, grouped under clear workstreams. Do not cap the baseline at 8–15 items. If a source item is not applicable, mark it `不适用` and briefly explain why; do not silently omit it.
+Start from `GEN-001 通用尽调教学框架`. List every applicable baseline diligence matter, grouped under clear workstreams. Do not cap the baseline at 8–15 items. If a source item is not applicable, mark it `不适用` and briefly explain why; do not silently omit it.
 
 For every item include:
 

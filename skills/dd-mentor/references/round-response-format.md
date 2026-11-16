@@ -121,3 +121,7 @@ After every user response:
 6. choose the next one to three questions from the remaining decisions with the greatest effect on scope.
 
 Do not regenerate a generic plan from scratch. Preserve unchanged conclusions and show the delta. Do not claim the provisional snapshots are complete or reviewed until the required three internal reviews are finished.
+
+## Evidence and closure consistency
+
+Apply quality-control.md to all snapshots: separate potential impact/priority from evidence strength; “已确认” by a user is not independent verification. Preserve F/I/T IDs and surface material source conflicts. Snapshot checks apply to displayed facts and proposed items; do not claim that full-report completeness reviews have run during early discussion. After scope discussion, route the first full report to fixed-report.md.
